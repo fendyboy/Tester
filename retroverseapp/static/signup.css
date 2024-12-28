@@ -1,0 +1,89 @@
+body {
+    
+    margin: 0;
+    padding: 0;
+    background-color:gray;
+    color: #333333;
+}
+
+.container-fluid {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #000; /* Black for brand name */
+}
+
+header p {
+    font-size: 1.2em;
+    color: #666; /* Dark gray for tagline */
+}
+
+.signup-form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: transparent;
+}
+
+.signup-form h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #000; /* Black for form title */
+}
+
+.signup-form label {
+    display: block;
+    font-size: 1em;
+    margin-bottom: 5px;
+    color: #000; /* Black for labels */
+}
+
+.signup-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #fff;
+    color: #000; /* Black text for input fields */
+}
+
+.signup-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #000; /* Black background for button */
+    color: #fff; /* White text for button */
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2em;
+    
+}
+
+.signup-form button:hover {
+    background-color: #333; /* Darker black on hover */
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #666; /* Dark gray for footer text */
+}
+body{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }

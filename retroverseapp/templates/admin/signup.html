@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retroverse Admin Sign In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/adminsignin.css">
+</head>
+<body class="bg-light text-dark">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4" style="max-width: 400px; width: 100%; background-color: #000; color: #fff;">
+            <h3 class="text-center mb-4">Retroverse Admin Signup</h3>
+            <div class='text-center' >
+                {%with msg  = get_flashed_messages() %}
+                {%if msg%}
+                    {%for  message in msg%}
+                        {{message}}
+                    {%endfor%}
+                {%endif%}
+            {%endwith%}
+            </div>
+            <br/>
+            <form method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter your username" name='username'>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" name='email'>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password" name='password'>
+                </div>
+                <div class="mb-3">
+                    <label for="cpassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="cpassword" placeholder="Confirm password" name='confirmpassword'>
+                </div><br/>
+                <button type="submit" class="btn btn-light w-100">Sign In</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

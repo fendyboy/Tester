@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Product Management</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            background-color: #212529;
+            padding-top: 20px;
+            color: #ffffff;
+        }
+        .sidebar a {
+            color: #ffffff;
+            padding: 15px;
+            text-decoration: none;
+            display: block;
+        }
+        .main-content {
+            margin-left: 260px;
+            padding: 20px;
+        }
+        .flash {
+            color: red !important;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .form-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-center">Retroverse Admin</h4>
+        <a href="/admindash/">Dashboard</a>
+        <a href="/customersorders/">Orders</a>
+        <a href="/products/">Products</a>
+        <a href="#customers">Customers</a>
+        
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2 class="text-center">Product Management</h2>
+
+        <!-- Add Product Form -->
+        <h5 class='text-center'>Add New Product</h5>
+
+        <form method="POST" enctype="multipart/form-data">
+            
+            {{ prodform.hidden_tag() }} 
+            <!-- Flash messages -->
+            <div class="flash">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <div class="form-group">
+                {{ prodform.productname.label }}
+                {{ prodform.productname(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                {{ prodform.productdescription.label }}
+                {{ prodform.productdescription(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                {{ prodform.productprice.label }}
+                {{ prodform.productprice(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                {{ prodform.productimage.label }}
+                {{ prodform.productimage(class="form-control-file") }}
+            </div>
+
+            <div class="form-group">
+                {{ prodform.sizes.label }} 
+                {% for size in prodform.sizes %}
+                    <label>{{ size }} {{ size.label }}</label>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                {{ prodform.Tag.label }}
+                {{ prodform.Tag(class="form-control") }}
+            </div>
+
+            <div class="form-group">
+                {{ prodform.category.label }} 
+                {% for category in prodform.category %}
+                    <label>{{ category }} {{ category.label }}</label>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Product</button>
+        </form>
+
+        <hr>
+
+        <!-- Product List -->
+       
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

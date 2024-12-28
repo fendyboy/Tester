@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Your Clothing Brand</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/animate.min.css">
+  <link rel="stylesheet" href="/static/retroverses.css">
+  <link rel="stylesheet" href="/static/fontawesome/css/all.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        .bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.8); /* white with 80% opacity */
+            padding: 10px; /* add some padding to make it look better */
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* add a subtle border */
+          }
+            .bar .navbar-brand, .bar .nav-link {
+              color: #333; /* dark gray text color */
+            }
+            
+            .bar .navbar-brand:hover, .bar .nav-link:hover {
+              color: #555; /* darker gray text color on hover */
+            }
+            
+            .bar .fa-solid, .bar .fa-regular {
+              color: #666; /* dark gray icon color */
+            }
+    </style>
+</head>
+<body>
+    {% extends "user/header.html" %}
+ 
+{%block content%}
+    <!-- Navigation Bar -->
+    
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Contact Information -->
+                    <h2>Contact Us</h2>
+                    <p>Have a question or need assistance? Reach out to us and we'll get back to you as soon as possible.</p>
+                    <ul class="list-unstyled">
+                        <li><strong>Phone:</strong> +1234567890</li>
+                        <li><strong>Email:</strong> info@retroverse.com</li>
+                        <li><strong>Address:</strong> 123 fresh, City, Nigeria</li>
+                    </ul>
+                    <!-- Image Placeholder -->
+                    <img src="/static/images/hope.png" class="img-fluid rounded mt-4" alt="Contact Us Image">
+                </div>
+                <div class="col-md-6">
+                    <!-- Contact Form -->
+                    <h2>Send Us a Message</h2>
+                    <form  action="/report/" method="post">
+                        {% with messages = get_flashed_messages()%}
+                            {%if messages %}
+                                {%for m in messages %}
+                                    <p class='flash'>{{m}}</p>
+                                {%endfor%}
+                            {%endif%}
+                        {% endwith %}
+                        <input type="hidden"  value='{{csrf_token() }}' name='csrf_token'>
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name" name='name'>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" name='email'>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Enter your message" name='message'></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    {% include "user/footer.html" %}
+      
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src='/static/bootstrap/js/bootstrap.bundle.js'></script>
+</body>
+</html>
+{%endblock%}

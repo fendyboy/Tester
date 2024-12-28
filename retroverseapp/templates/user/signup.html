@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retroverse - Sign Up</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/signup.css">
+    <link rel="stylesheet" href="/static/retroverses.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid" >
+        
+        
+            <header>
+                <h1>Retroverse</h1>
+                <p>The clothing brand for all</p>
+            </header>
+            <main>
+                <section class="signup-form">
+                    <h4 class="text-center ">Register Here!</h4>
+                    <br>
+                    <form action="" method="post">
+                        {% with messages = get_flashed_messages()%}
+                            {%if messages %}
+                                {%for m in messages %}
+                                    <p class='flash'>{{m}}</p>
+                                {%endfor%}
+                            {%endif%}
+                        {% endwith %}
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <label for="fname">First Name:</label>
+                        <input type="text" id="fname" name="firstname">
+                        <label for="lname">Last Name:</label>
+                        <input type="text" id="lname" name="lastname" >
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" >
+                        <label for="uname">Username:</label>
+                        <input type="text" id="uname" name="username" >
+                    
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" >
+                    
+                        <label for="confirmpassword">Confirm Password:</label>
+                        <input type="password" id="confirmpassword" name="confirmpassword">
+                        <label for="password">Phone:</label>
+                        <input type="text" id="phone" name="phone" >
+                        <label for="address">address:</label>
+                        <input type="text" id="address" name="address" >
+                        <div class="row">
+                            
+                        </div>
+                        
+                            
+                    
+
+                        <button type="submit" class='mb-3'>Create Account</button>
+                        <span class="text-center ms-5 ps-3" >I already have account ?<a href="/login/" style=''>Login</a> </span>
+                    </form>
+                </section>
+            </main>
+            <footer>
+                <p>&copy; 2024 Retroverse. All rights reserved.</p>
+            </footer>
+        
+    </div>
+    <script src='/static/bootstrap/js/bootstrap.bundle.js'></script>
+</body>
+</html>

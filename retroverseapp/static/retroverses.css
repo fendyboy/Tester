@@ -1,0 +1,83 @@
+@font-face {
+  font-family: myfont;
+  src: url(static/hope.ttf);
+}
+
+.banner {
+    position: relative;
+    height: 650px; 
+    background-size: cover;
+   background-position: center;
+    color:black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    background-position-y: top;
+  }
+  .banner-content {
+    z-index: 1;
+    
+    
+  }
+  .navbar-brand {
+    font-size: 1.5rem; 
+    font-weight: bold;
+  }
+  .offer{
+    height:200px ;
+    border: 1px solid black;
+  }
+  .summerwear{
+    min-height: 600px;
+    border: 1px solid red;
+  }
+  .select  {
+    display: inline-block;
+    text-align: center;
+   
+  }
+  .dog :hover{
+    box-shadow:20px;
+  }
+  .ima{
+    
+    margin-left: 300px;
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  li{
+    margin-left: 10px;
+  }
+.bar {
+  font-size: 17px;
+  
+}
+.bar i{
+  font-size: 20px !important;
+  margin-left: 10px;
+}
+.work{
+  height: inherit;
+  width: inherit;
+}
+
+body{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.flash{
+  
+  color: red;
+
+}
+.border{
+  border: 1px solid grey;
+  height:auto;
+  border-radius: 10px;
+}

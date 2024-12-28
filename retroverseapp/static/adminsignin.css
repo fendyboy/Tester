@@ -1,0 +1,38 @@
+/* styles.css */
+
+body {
+    background-color: #fff; /* White background for the whole page */
+    color: #000; /* Black text color for readability */
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    
+}
+
+.card h3 {
+    color: #fff; /* White text color for the card header */
+    
+}
+
+.form-control {
+    background-color: #333; /* Dark background for input fields */
+    color: #fff; /* White text color for input fields */
+    border: 1px solid #444; /* Dark border for input fields */
+}
+
+.form-control::placeholder {
+    color: #888; /* Light grey placeholder text for input fields */
+}
+
+.btn-light {
+    background-color: #fff; /* White background for the button */
+    border: 1px solid #000; /* Black border for the button */
+    color: #000; /* Black text color for the button */
+}
+
+.btn-light:hover {
+    background-color: #f0f0f0; /* Slightly darker white background on hover */
+    border-color: #000; /* Keep the border black on hover */
+}

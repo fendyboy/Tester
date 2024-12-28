@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/fontawesome/css/all.css">
+    <title>Search Page</title>
+    <style type="text/css">
+        body {
+            background-color: #000;
+        }
+        .search {
+            border: 1px solid grey;
+            border-radius: 10px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+        .search-bar {
+            border: none;
+            width: 100%;
+            padding: 10px;
+            color: #000; /* Text color for input */
+            background-color: transparent; /* Make input background transparent */
+        }
+        .search-icon {
+            margin-right: 10px;
+            color: grey;
+        }
+        .sec{
+            margin-top: 30%;
+            font-size: xx-large;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <form method="POST" action="{{ url_for('search') }}" class="text-center mt-5">
+        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+        <div class="row justify-content-center">
+            <div class="col-5">
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" name="search_query" id="search_query" class="search-bar" placeholder="Search">
+                    <button type="submit" class="btn btn-primary mt-1" id="button">Search</button>    
+                </div>
+               
+                <div class="row">
+                    <div class="col">
+                        <i class="fa-solid fa-magnifying-glass search-icon sec" id="search-icon"></i>
+                        {% if results and query %}
+    <ul>
+        {% for product in results %}
+            <li>
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <p>Price: ${{ product.price }}</p>
+            </li>
+            <hr/>
+        {% endfor %}
+    </ul>
+{% elif query %}
+    <p>No products found for "{{ query }}"</p>
+{% else %}
+    <p>Welcome to the search page</p>
+{% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="/static/jquery-3.7.1.min.js"></script>
+    <script src='/static/bootstrap/js/bootstrap.bundle.js'></script>
+    <script>
+        $(document).ready(function(){
+            $('button').click(function(){
+                $('#search-icon').hide();
+            })
+        })
+    </script>
+
+</body>
+</html>

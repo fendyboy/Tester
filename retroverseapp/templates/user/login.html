@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retroverse - Sign Up</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/signup.css">
+    <link rel="stylesheet" href="/static/retroverses.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid mt-5" >
+        
+        
+            <header>
+                <h1>Retroverse</h1>
+                <p>The clothing brand for all</p>
+            </header>
+            <main>
+                <section class="signup-form">
+                    <h2 class="text-center ">Login </h2>
+                
+                    <form action="" method="post">
+                        {% with messages = get_flashed_messages()%}
+                            {%if messages %}
+                                {%for m in messages %}
+                                    <p class='flash'>{{m}}</p>
+                                {%endfor%}
+                            {%endif%}
+                        {% endwith %}
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        
+                        
+                        
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" >
+                    
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" >
+                    
+                        
+                        
+                            
+                    
+
+                        <button type="submit" class="mb-3">Login</button>
+                    </form>
+                    <span class="text-center ms-5">I don't have and account ?<a href="/signup" >signup</a> </span>
+                </section>
+            </main>
+            
+            <footer>
+                <p>&copy; 2024 Retroverse. All rights reserved.</p>
+            </footer>
+        
+    </div>
+</body>
+</html>

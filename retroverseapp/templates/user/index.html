@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retroverse Clothing</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/animate.min.css">
+  <link rel="stylesheet" href="/static/retroverses.css">
+  <link rel="stylesheet" href="/static/fontawesome/css/all.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  
+  <style type="text/css">
+    .bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.8); /* white with 80% opacity */
+      padding: 10px; /* add some padding to make it look better */
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* add a subtle border */
+    }
+      .bar .navbar-brand, .bar .nav-link {
+        color: #333; /* dark gray text color */
+      }
+      
+      .bar .navbar-brand:hover, .bar .nav-link:hover {
+        color: #555; /* darker gray text color on hover */
+      }
+      
+      .bar .fa-solid, .bar .fa-regular {
+        color: #666; /* dark gray icon color */
+      }
+    </style>
+</head>
+<body>
+
+
+
+ 
+
+  <!-- Banner with Background Image -->
+  {% extends "user/header.html" %}
+  {%block content%}
+  <div class="banner " style="background-image: url('/static/images/nike2.png');">
+    
+    
+    <div class="banner-content">
+      
+      
+      <h1>Welcome to Retroverse</h1>
+      <p>Discover the vintage styles that inspire</p>
+      <a href="{{url_for('clothing')}}" class="btn btn-dark">Shop Now</a>
+    </div>
+  </div>
+  <div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col text-center">
+        <h3>Latest products</h3>
+        <p>Get exculsive clothing for cheap and affordable prices </p>
+      </div>
+    </div>
+
+    
+    <div class="row">
+      {%for product in latest_products%}
+      <div class="col-6" style="justify-content: space-between;">
+        <div>
+          <img src="/static/images/{{product.image}}" alt="{{product.name}}" class="img-fluid" >
+          <div><p class="text-start">{{product.name}}</p></div>
+          <div class="col-12 d-flex justify-content-between">
+            <div class="col-6">
+              <p class="text-start">${{product.price}}</p>
+            </div>
+            <div class="col-6 text-end">
+              <form action="/wishlist/{{product.id}}">
+                <a href="" class="text-end" ><i class="fa-regular fa-heart text-end "  style='font-size:30px;background-color:black;'></i> </a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+  </div>
+    
+      <div class="row offer ">
+        <div class="col mt-5 text-center">
+          <h4>Featured Projects</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center mb-5">
+          <h3>Men Summer Wear</h3>
+        </div>
+      </div>
+      <div class="row summerwear" >
+        
+          {%for product in men_summer_wear%}
+            <div class="col-3" >
+              <img src="static/images/{{product.image}}" alt="{{product.name}}}" class="img-fluid">
+              <p class="text-start mt-3">{{product.name}}</p>
+              <div>
+                <p>{{product.price}}</p>
+              <a href="" class="text-end" ><i class="fa-regular fa-heart "  style='font-size:30px;color:black;'></i> </a>
+              </div>
+            </div>
+          {%endfor%}
+        
+      </div>
+      <div class="clearfix"></div>
+      <div class="row mt-4">
+        <div class="col text-center mt-4">
+          <h3>Women Summer Wear</h3>
+        </div>
+      </div>
+      <div class="row">
+        {% for product in women_summer_wear %}
+  <div class="col-md-4 col-sm-6">
+    <img src="/static/images/{{ product.image }}" class="img-fluid mt-2" alt="{{ product.name }}">
+    <h6>{{ product.name }}</h6>
+    <p>${{ product.price }}</p>
+    <form id="add-to-cart-form" action="/add_to_cart/{{ product.id }}" method="POST">
+      <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+      <div class="center-button">
+          <button type="submit" class="btn btn-primary">Add to Cart</button>
+      </div>
+  </form>
+
+  </div>
+  {% endfor %}    
+      </div>
+     <div class="row mt-5" style="min-height: 100px;">
+      <div class="col-12" style="justify-content:center;text-align: center;align-content: center;">
+        <video src="/static/images/Retro.mp4 "    autoplay loop muted height="90%" width="70%"></video>
+      </div>
+      </div>
+    
+     
+     <!-- Footer -->
+{% include "user/footer.html" %}
+
+    
+   
+  </div>
+  
+
+  <!-- Bootstrap JS and dependencies (optional) -->
+  <script src='/static/bootstrap/js/bootstrap.bundle.js'></script>
+  <script src="/static/js/jquery-3.7.1.min.js"></script>
+  
+    <script>
+      $(document).ready(function() {
+        $('#add-to-cart-form').on('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission  
+            $.ajax({
+                url: $(this).attr('action'),
+                method: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    if (response.status === 'success') {
+                        alert(response.message); 
+                    } else {
+                        alert(response.message); 
+                    }
+                },
+                error: function(xhr) {
+                    alert('An error occurred: ' + xhr.responseText);
+                }
+            });
+        });
+    });
+    
+    </script>
+
+</body>
+</html>
+{%endblock%}

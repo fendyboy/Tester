@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/retroverses.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+
+    {% if results %}
+        <ul>
+            {% for product in results %}
+                <li>
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.description }}</p>
+                    <p>Price: ${{ product.price }}</p>
+                </li>
+                <hr/>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No products found for "{{ query }}"</p>
+    {% endif %}
+    <script src='/static/bootstrap/js/bootstrap.bundle.js'></script>
+</body>
+</html>
